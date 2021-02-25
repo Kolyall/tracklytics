@@ -31,10 +31,12 @@ android {
 
 dependencies {
     compileOnly "org.aspectj:aspectjrt:1.8.10"
+    testImplementation "org.aspectj:aspectjrt:1.8.10"
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     testImplementation 'com.google.truth:truth:0.28'
-    testImplementation "org.mockito:mockito-core:3.3.3"
+    testImplementation "org.mockito:mockito-core:3.7.7"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 android.libraryVariants.all { variant ->

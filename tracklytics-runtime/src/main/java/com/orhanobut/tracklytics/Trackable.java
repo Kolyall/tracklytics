@@ -1,5 +1,7 @@
 package com.orhanobut.tracklytics;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Map;
 
 /**
@@ -9,5 +11,6 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public interface Trackable {
 
+  @Nullable
   Map<String, Object> getTrackableAttributes();
 }

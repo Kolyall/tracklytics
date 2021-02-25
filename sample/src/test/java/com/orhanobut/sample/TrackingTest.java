@@ -27,14 +27,26 @@ public class TrackingTest {
   }
 
   @Test public void confirmKotlinAspects() {
-    new FooKotlin().trackFoo();
+    new FooKotlin().trackFoo("any_value");
 
     assertThat(triggeredEvents).containsKey("event_kotlin");
+    Event event = triggeredEvents.get("event_kotlin");
+    Map<String, Object> attributes = event.attributes;
+    assertThat(attributes).containsKey("screen_name");
+    assertThat(attributes).containsKey("fun_attribute");
+    assertThat(attributes.get("fun_attribute")).isEqualTo("any_value");
+  }
+  @Test public void confirmJavaObjectAspects() {
+    new JavaObject().track();
+
+    assertThat(triggeredEvents).containsKey("event_java_object");
+    Event event = triggeredEvents.get("event_java_object");
+    assertThat(event.attributes).containsKey("screen_name");
   }
 
   @Test public void confirmJavaAspects() {
     new KotlinObject().track();
 
-    assertThat(triggeredEvents).containsKey("event_java");
+    assertThat(triggeredEvents).containsKey("event_kotlin_object");
   }
 }
